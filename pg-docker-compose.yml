@@ -15,10 +15,10 @@ services:
       - '5435:5435'
     expose:
       # Opens port 3306 on the container
-      # Where our data will be persisted
-    container_name: pg-docker-local
+      - '5435'
+    container_name: pgdocker
     networks:
-      - pgnetwork
+      - pgdockernetwork
     volumes:
       - pgvol:/var/lib/postgresql/data
     secrets:
@@ -32,5 +32,5 @@ secrets:
     file: dba_pg.txt
 
 networks:
-  pgnetwork:
+  pgdockernetwork:
     driver: bridge
