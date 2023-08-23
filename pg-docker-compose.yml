@@ -4,18 +4,18 @@ version: '3.8'
   #https://docs.docker.com/compose/use-secrets/
 
 services:
-  db:
+  dbpgdocker:
     image: postgres:14.1-alpine
     restart: always
     environment:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: /run/secrets/dba_pg
     ports:
-      # <Port exposed> : <MySQL Port running inside container>
-      - '5435:5435'
+      # <Port exposed> : <pg Port running inside container>
+      - '5435:5432'
     expose:
-      # Opens port 3306 on the container
-      - '5435'
+      # Opens port 5432 on the container
+      - '5432'
     container_name: pgdocker
     networks:
       - pgdockernetwork
