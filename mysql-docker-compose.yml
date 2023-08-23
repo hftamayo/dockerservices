@@ -1,7 +1,7 @@
-version: '3.3'
+version: '3.8'
 
-services:
-  db:
+services:     
+  dbmysqldocker:
     image: mysql:8.1.0
     restart: always
     environment:
@@ -18,7 +18,7 @@ services:
       # Opens port 3306 on the container
       - '3306'
       # Where our data will be persisted
-    container_name: mysql-docker-local
+    container_name: mysqldocker
     networks:
       - jsbtodorest
     volumes:
