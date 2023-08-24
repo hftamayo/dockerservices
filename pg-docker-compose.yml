@@ -7,9 +7,8 @@ services:
   dbpgdocker:
     image: postgres:14.1-alpine
     restart: always
-    environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: /run/secrets/dba_pg
+    env_file:
+      - ./.envpg
     ports:
       # <Port exposed> : <pg Port running inside container>
       - '5435:5432'
@@ -20,17 +19,13 @@ services:
     networks:
       - pgdockernetwork
     volumes:
-      - pgvol:/var/lib/postgresql/data
-    secrets:
-      - dba_pg
+      - pgdata:/var/lib/postgresql/data
+      - ./pginit.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
-  pgvol:
-
-secrets:
-  dba_pg:
-    file: dba_pg.txt
+  pgdata:
 
 networks:
   pgdockernetwork:
+    name: pgdockernetwork
     driver: bridge
