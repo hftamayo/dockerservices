@@ -19,7 +19,7 @@ services:
     networks:
       - pgdockernetwork
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - gobankdata:/var/lib/postgresql/data
       - ./pginit.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
