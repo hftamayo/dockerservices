@@ -7,8 +7,10 @@ services:
   dbpgdocker:
     image: postgres:14.1-alpine
     restart: always
+    #postgres user is the default admin
+    #the intention is to set a custom password
     env_file:
-      - ./.envpg
+      - ./pginit/.envpg
     ports:
       # <Port exposed> : <pg Port running inside container>
       - '5435:5432'
