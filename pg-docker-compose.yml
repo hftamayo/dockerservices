@@ -18,8 +18,7 @@ services:
     volumes:
       #mapping data from container to the host directory
       - ./gobankdata:/var/lib/postgresql/data
-      - ./pginit/gobankinit.sql:/docker-entrypoint-initdb.d/gobankinit.sql
-      - ./pginit/gobankdmigrate.sql:/docker-entrypoint-initdb.d/gobankdmigrate.sql
+      - ./pginit/gobankschema.sql:/docker-entrypoint-initdb.d/gobankschema.sql
 
 volumes:
   #volume's name
