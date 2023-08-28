@@ -12,14 +12,11 @@ services:
     ports:
       # <Port exposed> : <pg Port running inside container>
       - '5435:5432'
-    expose:
-      # Opens port 5432 on the container
-      - '5432'
     container_name: pgdocker
     networks:
       - pgdockernetwork
     volumes:
-      - gobankdata:/var/lib/postgresql/data
+      - ./gobankdata:/var/lib/postgresql/data
       - ./pginit.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
