@@ -16,8 +16,8 @@ services:
     networks:
       - pgdockernetwork
     volumes:
-      #mapping data from container to the host directory
-      - ./gobankdata:/var/lib/postgresql/data
+      #mapping data from container to the host computer default location
+      - gobankdata:/var/lib/postgresql/data
       - ./pginit/gobankschema.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
